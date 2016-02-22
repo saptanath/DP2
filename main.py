@@ -58,7 +58,7 @@ def mymean (mylist):
 def standardev (mylist):
 	i = 0
 	std = 0.0
-	mea = mymean(mylist)
+	mea = mymean(mylist )
 	while i < len(mylist):
 		num = abs(mylist[i] - mea)
 		num = math.pow(num, 2)
@@ -91,19 +91,22 @@ def stats (mylist, ol):
 
 	return stdx 
 
-def difference (mylist1, mylist2):
+def difference (mylist):
 	i = 0
 	diff = []
-	while i < len(mylist1):
-		num = mylist1[i] - mylist2[i]
+	temp = mymean(mylist)
+	while i < len(mylist):
+		num = mylist[i] - temp
 		num = abs(num)
 		diff.append(num)
+		temp = mylist[i]
 		i = i+1
 	
 	return diff
 
-#print difference(filtered, original)	
+#print difference(original2)	
+print stats(difference(original2), 35)
+print stats(difference(original), 75)
 print stats(original2, 35)
-print
 print stats(original, 75)
 
