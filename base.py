@@ -8,10 +8,12 @@ class base:
 	def __init__(self, infile):
 		self.infile = infile 
 
-	def start (self, ol):
+	def start (self):
 		self.convert(self.infile)
-		print self.stats(self.converts, ol)
-		print self.rootmean(self.difference(self.converts), ol)
+		return self.converts
+
+	def stddev (self, ol):
+		return self.stats(self.converts, ol)	
 
 	def convert (self, infile):
 		line = self.infile.readlines()
@@ -21,7 +23,6 @@ class base:
 			self.converts.append(num)
 			i = i + 1
 		self.infile.close()	
-		return 
 
 
 	def mymean (self, mylist):
@@ -59,7 +60,7 @@ class base:
 			temp.append(mylist[i])
 			i = i+1
 			j = j+1
-			if (j == ol or i == length+1):
+			if (j == ol or i == length):
 				if(len(temp) == 1):
 					j=0
 					temp=[]
@@ -125,4 +126,3 @@ class base:
 			p = (1-k)*p
 			self.filtered.append(x)
 			i = i+1	
-		print self.filtered	

@@ -1,11 +1,17 @@
 from base import *
+from compare import *
 
-infile = open("C:\Users\wearable\it2.txt", "r")
-infile2 = open("C:\Users\wearable\IT.txt", "r")
-
+infile = open("C:\Users\wearable\emily.txt", "r")
+#infile2 = open("C:\Users\wearable\IT.txt", "r")
+oxy = []
+oxy_1 = []
 test1 = base(infile)
-test1.start(35)
-test1.filter(0.35, 45.0, 1000.0, 0.0)
 test1.clear()
-test2 = base(infile2)
-test2.start(75)
+oxy = test1.start()
+oxy_1 = test1.filter(8, 550.0, 1000.0, 0.0)
+test2 = compare(oxy, oxy_1)
+test2.clear()
+test2.maximus(10)
+
+#test2 = base(infile2)
+#test2.start(75)
