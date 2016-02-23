@@ -1,28 +1,9 @@
-import math
+import math 
 
-class base:
+class statistics:
 
-	converts = []
-
-	def __init__(self, infile):
-		self.infile = infile 
-
-	def start (self):
-		self.convert(self.infile)
-		return self.converts
-
-	def stddev (self, ol):
-		return self.stats(self.converts, ol)	
-
-	def convert (self, infile):
-		line = self.infile.readlines()
-		i = 0
-		while i < len(line):
-			num = float(line[i])
-			self.converts.append(num)
-			i = i + 1
-		self.infile.close()	
-
+	def __init__(self, funbun):
+		self.funbun = funbun
 
 	def mymean (self, mylist):
 		i = 0
@@ -31,7 +12,7 @@ class base:
 		while i < len(mylist):
 			me = me + mylist[i]
 			i = i+1
-	
+		
 		return me/(length)
 
 
@@ -61,15 +42,14 @@ class base:
 			j = j+1
 			if (j == ol or i == length):
 				if(len(temp) == 1):
-					j=0
-					temp=[]
+					j = 0
+					temp = []
 				else:
 					j = 0
 					stdx.append(self.standardev(temp))
-					temp =[]
-
+					temp = []
 		return stdx 
-
+	
 	def difference (self, mylist):
 		i = 0
 		diff = []
@@ -80,7 +60,7 @@ class base:
 			diff.append(num)
 			temp = mylist[i]
 			i = i+1
-	
+		
 		return diff
 
 	def rootmean (self, mylist, ol):
@@ -111,19 +91,23 @@ class base:
 			i = i+1
 		rootmeansq = math.sqrt(rootmeansq/(len(mylist)))
 		return rootmeansq
-
-	def clear (self):
-		self.converts[:] = []	
-
-	def filter (self, q, r, p, k):
+	
+	def mymeanps (self, mylist, ol):
 		i = 0
-		x = self.converts[0]
-		filtered = []
-		while i < len(self.converts):
-			p = p + q			
-			k = p/(p + r)
-			x = x + k*(self.converts[i] - x)
-			p = (1-k)*p
-			filtered.append(x)
-			i = i+1	
-		return filtered	
+		j = 0
+		temp = []
+		my2 = []
+		length = len(mylist)-1
+		while i < len(mylist):
+			temp.append(mylist[i])
+			i = i+1
+			j = j+1
+			if (j == ol or i == length):
+				if(len(temp) == 1):
+					j = 0
+					temp = []
+				else:
+					j = 0
+					my2.append(self.mymean(temp))
+					temp = []
+		return my2 	
