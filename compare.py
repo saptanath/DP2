@@ -1,3 +1,7 @@
+import matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
+
 import math 
 from statistics import *
 class compare:
@@ -46,7 +50,13 @@ class compare:
 		venus = statistics(self.mylist2)
 
 		self.lock = mars.mymeanps(self.mylist1, self.ol)
-		self.cork = mars.stats(self.mylist1, self.ol)
+		self.cork = mars.stats(self.mylist1, self.ol) #standard devaition of original data points 
 
 		self.sock = venus.mymeanps(self.mylist2, self.ol)
-		self.fork = venus.stats(self.mylist2, self.ol)
+		self.fork = venus.stats(self.mylist2, self.ol)  #standard deviation points for the filtered data points 
+
+		print self.fork
+		print self.cork
+
+		#check if heart rate value is above 70, check the standard deviation, look at the filtered data, to dtermine if there was a sudden rise or
+		#inconsistency on heart values such as a rapid wave. With each check the value to which standard deviation is compared to is changed. 
