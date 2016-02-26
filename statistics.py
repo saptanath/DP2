@@ -111,3 +111,14 @@ class statistics:
 					my2.append(self.mymean(temp))
 					temp = []
 		return my2 	
+
+	def lineread(self, mylist):
+		Y = (len(mylist) + 1)/2
+		y = 0
+		X = self.mymean(mylist)
+		slope = 0.0
+		temp = 0.0
+		while y < len(mylist): 
+			temp = ((mylist[y] - X)*(y - Y))/(math.pow(mylist[y] - X, 2))
+			slope = temp + slope 
+		return slope	
